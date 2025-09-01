@@ -1,0 +1,158 @@
+.header {
+  background-color: #1a1a1a;
+  color: #f8f8f8;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #d4af37;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  font-size: 2rem;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-menu a {
+  color: #f8f8f8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-menu a:hover {
+  color: #d4af37;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #d4af37;
+  transition: width 0.3s;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-btn,
+.wishlist-btn,
+.cart-btn {
+  background: none;
+  border: none;
+  color: #f8f8f8;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative;
+}
+
+.search-btn:hover,
+.wishlist-btn:hover,
+.cart-btn:hover {
+  color: #d4af37;
+  background-color: rgba(212, 175, 55, 0.1);
+}
+
+.cart-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #f8f8f8;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    background-color: #1a1a1a;
+    width: 80%;
+    height: calc(100vh - 70px);
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s;
+    z-index: 1000;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .logo-icon {
+    font-size: 1.7rem;
+  }
+  
+  .header-actions {
+    gap: 0.5rem;
+  }
+  
+  .search-btn,
+  .wishlist-btn,
+  .cart-btn {
+    font-size: 1.1rem;
+    padding: 0.4rem;
+  }
+}

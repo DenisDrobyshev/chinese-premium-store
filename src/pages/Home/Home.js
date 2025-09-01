@@ -1,0 +1,82 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import ProductCard from '../../components/ProductCard';
+import { products } from '../../data/products';
+import './Home.css';
+
+const Home = () => {
+  const featuredProducts = products.slice(0, 4);
+  
+  return (
+    <div className="home">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1>Искусство китайской роскоши</h1>
+          <p>Откройте для себя коллекцию премиальной одежды, созданной с многовековыми традициями китайского мастерства</p>
+          <Link to="/catalog" className="cta-button">Смотреть коллекцию</Link>
+        </div>
+        <div className="hero-image">
+          <img src="https://images.unsplash.com/photo-1584735175097-719d848f8449?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80" alt="Китайская премиальная одежда" />
+        </div>
+      </section>
+      
+      {/* Features Section */}
+      <section className="features-section">
+        <div className="container">
+          <h2>Почему выбирают Imperial Silk</h2>
+          <div className="features-grid">
+            <div className="feature">
+              <div className="feature-icon">🎨</div>
+              <h3>Уникальный дизайн</h3>
+              <p>Эксклюзивные узоры и вышивка, вдохновленные традиционным китайским искусством</p>
+            </div>
+            <div className="feature">
+              <div className="feature-icon">👑</div>
+              <h3>Премиальные материалы</h3>
+              <p>Только натуральный шелк высочайшего качества и ручная работа</p>
+            </div>
+            <div className="feature">
+              <div className="feature-icon">✈️</div>
+              <h3>Быстрая доставка</h3>
+              <p>Доставляем заказы по всему миру в кратчайшие сроки</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Featured Products Section */}
+      <section className="featured-products">
+        <div className="container">
+          <h2>Популярные товары</h2>
+          <div className="products-grid">
+            {featuredProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+          <div className="view-all-container">
+            <Link to="/catalog" className="view-all-btn">Смотреть все товары</Link>
+          </div>
+        </div>
+      </section>
+      
+      {/* Story Section */}
+      <section className="story-section">
+        <div className="container">
+          <div className="story-content">
+            <div className="story-text">
+              <h2>Наша история</h2>
+              <p>Imperial Silk продолжает вековые традиции китайского шелкового производства, объединяя ancient techniques с современным дизайном. Каждое изделие создается с вниманием к деталям и уважением к культурному наследию.</p>
+              <Link to="/about" className="learn-more-btn">Узнать больше</Link>
+            </div>
+            <div className="story-image">
+              <img src="https://images.unsplash.com/photo-1584889c5c9d-5fe0fbd9bd77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Традиционное китайское производство" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;

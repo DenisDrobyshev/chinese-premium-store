@@ -1,0 +1,101 @@
+export const products = [
+  {
+    id: 1,
+    title: "Шелковое платье с драконом",
+    category: "Платья",
+    price: 15999,
+    oldPrice: 19999,
+    image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    badge: "NEW",
+    description: "Роскошное шелковое платье с вышитым золотом драконом. Идеально для особых occasions.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Красный", "Черный", "Золотой"],
+    details: ["100% шелк", "Ручная вышивка", "Золотая отделка"]
+  },
+  {
+    id: 2,
+    title: "Костюм с китайским узором",
+    category: "Костюмы",
+    price: 22999,
+    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    badge: "EXCLUSIVE",
+    description: "Элегантный костюм с традиционным китайским узором. Символ статуса и утонченного вкуса.",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Синий", "Черный"],
+    details: ["Премиальная ткань", "Ручная работа", "Эксклюзивный дизайн"]
+  },
+  {
+    id: 3,
+    title: "Шелковая блуза с цветами сакуры",
+    category: "Блузы",
+    price: 8999,
+    oldPrice: 11999,
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    badge: "SALE",
+    description: "Нежная шелковая блуза с изысканной вышивкой цветов сакуры. Идеально сочетается с любым низом.",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Розовый", "Белый", "Кремовый"],
+    details: ["100% шелк", "Ручная вышивка", "Нежный крой"]
+  },
+  {
+    id: 4,
+    title: "Вечернее платье с фениксом",
+    category: "Платья",
+    price: 18999,
+    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    badge: "PREMIUM",
+    description: "Изысканное вечернее платье с вышитым фениксом - символом возрождения и благородства.",
+    sizes: ["S", "M", "L"],
+    colors: ["Черный", "Красный", "Золотой"],
+    details: ["Роскошный шелк", "Золотая вышивка", "Эксклюзивный дизайн"]
+  },
+  {
+    id: 5,
+    title: "Шелковый халат с иероглифами",
+    category: "Халаты",
+    price: 12999,
+    oldPrice: 15999,
+    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    badge: "SALE",
+    description: "Роскошный домашний халат из чистого шелка с вышитыми иероглифами, означающими удачу и процветание.",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["Бордовый", "Темно-синий", "Черный"],
+    details: ["100% шелк", "Вышивка вручную", "Пояс с кисточками"]
+  },
+  {
+    id: 6,
+    title: "Костюм с пейзажной вышивкой",
+    category: "Костюмы",
+    price: 24999,
+    image: "https://images.unsplash.com/photo-1520256865695-39873afed0e6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    badge: "LIMITED",
+    description: "Уникальный костюм с вышитым пейзажем в традиционном китайском стиле. Для истинных ценителей искусства.",
+    sizes: ["M", "L", "XL"],
+    colors: ["Серый", "Бежевый"],
+    details: ["Эксклюзивная ткань", "Художественная вышивка", "Ограниченная серия"]
+  },
+  {
+    id: 7,
+    title: "Шелковый комплект с пионами",
+    category: "Комплекты",
+    price: 17999,
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    badge: "POPULAR",
+    description: "Элегантный комплект из блузы и юбки с вышитыми пионами - символами богатства и чести в китайской культуре.",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Белый", "Розовый", "Красный"],
+    details: ["Набор из 2 предметов", "Ручная вышивка", "Премиальный шелк"]
+  },
+  {
+    id: 8,
+    title: "Вечерний наряд с золотой вышивкой",
+    category: "Платья",
+    price: 29999,
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
+    badge: "LUXURY",
+    description: "Невероятно роскошное вечернее платье с сложной золотой вышивкой в традиционном китайском стиле.",
+    sizes: ["S", "M"],
+    colors: ["Черный", "Красный"],
+    details: ["Эксклюзивный дизайн", "Золотые нити", "Индивидуальный пошив"]
+  }
+];
