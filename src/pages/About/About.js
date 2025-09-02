@@ -18,7 +18,7 @@ const About = () => {
               <p>Мы объединяем ancient techniques с современным дизайном, создавая одежду, которая отражает богатое культурное наследие Китая и соответствует актуальным трендам мировой моды.</p>
             </div>
             <div className="story-image">
-              <img src="https://images.unsplash.com/photo-1584889c5c9d-5fe0fbd9bd77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Традиционное китайское производство" />
+              <img src="https://logichina.ru/wp-content/uploads/2025/04/gl2.png" alt="Традиционное китайское производство" />
             </div>
           </section>
           

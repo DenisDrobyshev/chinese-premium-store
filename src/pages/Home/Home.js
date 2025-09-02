@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../../components/ProductCard';
 import { products } from '../../data/products';
 import './Home.css';
 
+const RECENTS_KEY = 'imperial_recent_ids';
+
 const Home = () => {
   const featuredProducts = products.slice(0, 4);
+  const [recent, setRecent] = useState([]);
+
+  useEffect(() => {
+    try {
+      const ids = JSON.parse(localStorage.getItem(RECENTS_KEY) || '[]');
+      const mapped = ids
+        .map((pid) => products.find(p => p.id === pid))
+        .filter(Boolean)
+        .slice(0, 8);
+      setRecent(mapped);
+    } catch (e) {
+      setRecent([]);
+    }
+  }, []);
   
   return (
     <div className="home">
@@ -60,6 +76,20 @@ const Home = () => {
         </div>
       </section>
       
+      {/* Recently Viewed */}
+      {recent.length > 0 && (
+        <section className="featured-products">
+          <div className="container">
+            <h2>Недавно просматривали</h2>
+            <div className="products-grid">
+              {recent.map(product => (
+                <ProductCard key={`recent-${product.id}`} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+      
       {/* Story Section */}
       <section className="story-section">
         <div className="container">
@@ -70,7 +100,7 @@ const Home = () => {
               <Link to="/about" className="learn-more-btn">Узнать больше</Link>
             </div>
             <div className="story-image">
-              <img src="https://images.unsplash.com/photo-1584889c5c9d-5fe0fbd9bd77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Традиционное китайское производство" />
+              <img src="https://i.pinimg.com/736x/fd/31/02/fd31027d4d7bee7a7a3e46333b7be10c.jpg" alt="Традиционное китайское производство" />
             </div>
           </div>
         </div>

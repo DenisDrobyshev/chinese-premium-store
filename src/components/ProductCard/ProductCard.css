@@ -2,9 +2,10 @@
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   position: relative;
+  perspective: 800px;
 }
 
 .product-card:hover {
@@ -22,17 +23,35 @@
   position: relative;
   height: 280px;
   overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.product-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.25) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.product-card:hover .product-image::after {
+  opacity: 1;
 }
 
 .product-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s;
+  will-change: transform;
+  transition: transform 0.5s ease;
+  transform-origin: center center;
 }
 
+/* Zoom slightly stronger on Y axis for a stylish look */
 .product-card:hover .product-image img {
-  transform: scale(1.05);
+  transform: scale3d(1.08, 1.14, 1) rotateX(2deg);
 }
 
 .image-placeholder {
@@ -47,9 +66,7 @@
 }
 
 @keyframes shine {
-  to {
-    background-position-x: -200%;
-  }
+  to { background-position-x: -200%; }
 }
 
 .product-badge {
@@ -63,40 +80,13 @@
   text-transform: uppercase;
 }
 
-.product-badge.new {
-  background-color: #2ecc71;
-  color: white;
-}
-
-.product-badge.sale {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.product-badge.premium {
-  background-color: #d4af37;
-  color: black;
-}
-
-.product-badge.exclusive {
-  background: linear-gradient(45deg, #d4af37, #f39c12);
-  color: black;
-}
-
-.product-badge.limited {
-  background-color: #9b59b6;
-  color: white;
-}
-
-.product-badge.popular {
-  background-color: #3498db;
-  color: white;
-}
-
-.product-badge.luxury {
-  background: linear-gradient(45deg, #1a1a1a, #34495e);
-  color: white;
-}
+.product-badge.new { background-color: #2ecc71; color: white; }
+.product-badge.sale { background-color: #e74c3c; color: white; }
+.product-badge.premium { background-color: #d4af37; color: black; }
+.product-badge.exclusive { background: linear-gradient(45deg, #d4af37, #f39c12); color: black; }
+.product-badge.limited { background-color: #9b59b6; color: white; }
+.product-badge.popular { background-color: #3498db; color: white; }
+.product-badge.luxury { background: linear-gradient(45deg, #1a1a1a, #34495e); color: white; }
 
 .wishlist-btn {
   position: absolute;
@@ -116,19 +106,32 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.wishlist-btn:hover {
-  color: #e74c3c;
-  transform: scale(1.1);
+.wishlist-btn:hover { color: #e74c3c; transform: scale(1.1); }
+.wishlist-btn.active { color: #e74c3c; background: rgba(231, 76, 60, 0.1); }
+
+.quick-view-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  background: rgba(255,255,255,0.95);
+  color: #2c3e50;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.wishlist-btn.active {
-  color: #e74c3c;
-  background: rgba(231, 76, 60, 0.1);
+.product-card:hover .quick-view-btn {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
-.product-info {
-  padding: 1.2rem;
-}
+.product-info { padding: 1.2rem; }
 
 .product-category {
   display: block;
@@ -151,32 +154,19 @@
   overflow: hidden;
 }
 
-.product-price {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+.product-price { display: flex; justify-content: space-between; align-items: center; }
 
-.price-container {
-  display: flex;
-  flex-direction: column;
-}
+.price-container { display: flex; flex-direction: column; }
 
-.current-price {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #2c3e50;
-}
-
-.old-price {
-  font-size: 0.9rem;
-  text-decoration: line-through;
-  color: #95a5a6;
-}
+.current-price { font-size: 1.2rem; font-weight: 700; color: #2c3e50; }
+.old-price { font-size: 0.9rem; text-decoration: line-through; color: #95a5a6; }
 
 .add-to-cart-btn {
   width: 40px;
   height: 40px;
+  /**flex: 0 0 26px;**/
+  /**min-width: 26px;**/
+  /**padding: 0;**/
   border-radius: 50%;
   border: none;
   background: #d4af37;
@@ -188,25 +178,71 @@
   transition: all 0.3s;
 }
 
-.add-to-cart-btn:hover {
-  background: #c19b2e;
-  transform: scale(1.05);
+.add-to-cart-btn i { font-size: 0.9rem; line-height: 1; }
+
+.add-to-cart-btn:hover { background: #c19b2e; transform: scale(1.05); }
+
+/* Hover preview */
+.hover-preview {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  max-width: 92vw;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  overflow: hidden;
+  animation: previewIn 0.18s ease-out;
+  z-index: 3000;
+  pointer-events: none;
+}
+
+.hover-preview-image {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.hover-preview-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hover-preview-info {
+  padding: 0.9rem 1.1rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hover-preview-title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-right: 0.5rem;
+}
+
+.hover-preview-price {
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+@keyframes previewIn {
+  from { opacity: 0; transform: translate(-50%, -46%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+@media (hover: none) {
+  /* Disable hover preview on touch devices */
+  .hover-preview { display: none; }
 }
 
 @media (max-width: 768px) {
-  .product-image {
-    height: 220px;
-  }
-  
-  .product-info {
-    padding: 1rem;
-  }
-  
-  .product-title {
-    font-size: 1rem;
-  }
-  
-  .current-price {
-    font-size: 1.1rem;
-  }
+  .product-image { height: 220px; }
+  .product-info { padding: 1rem; }
+  .product-title { font-size: 1rem; }
+  .current-price { font-size: 1.1rem; }
+  .quick-view-btn { display: none; }
 }

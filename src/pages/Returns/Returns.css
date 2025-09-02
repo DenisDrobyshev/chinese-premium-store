@@ -1,0 +1,28 @@
+.legal-page {
+  padding: 2rem 0;
+}
+
+.legal-page h1 {
+  font-family: 'Noto Serif SC', serif;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.legal-page h2 {
+  color: #2c3e50;
+  margin-top: 1.5rem;
+}
+
+.legal-page p, .legal-page li {
+  color: #555;
+}
+
+.legal-page ul, .legal-page ol {
+  padding-left: 1.2rem;
+}
+
+@media (max-width: 576px) {
+  .legal-page {
+    padding: 1rem 0;
+  }
+}

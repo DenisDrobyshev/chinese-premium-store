@@ -1,21 +1,55 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './ProductCard.css';
+
+const WISHLIST_KEY = 'imperial_wishlist_ids';
 
 const ProductCard = ({ product }) => {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const { addToCart } = useCart();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem(WISHLIST_KEY) || '[]');
+      setIsWishlisted(stored.includes(product.id));
+    } catch (e) {
+      // ignore
+    }
+  }, [product.id]);
+
+  const persistWishlist = (nextState) => {
+    try {
+      const stored = JSON.parse(localStorage.getItem(WISHLIST_KEY) || '[]');
+      const next = nextState
+        ? Array.from(new Set([...stored, product.id]))
+        : stored.filter((id) => id !== product.id);
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(next));
+    } catch (e) {
+      // ignore
+    }
+  };
 
   const handleWishlistClick = () => {
-    setIsWishlisted(!isWishlisted);
+    setIsWishlisted((prev) => {
+      const next = !prev;
+      persistWishlist(next);
+      return next;
+    });
   };
 
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product, 'M', 1);
+  };
+
+  const handleQuickView = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(`/product/${product.id}`);
   };
 
   return (
@@ -37,8 +71,13 @@ const ProductCard = ({ product }) => {
               e.stopPropagation();
               handleWishlistClick();
             }}
+            aria-pressed={isWishlisted}
+            aria-label={isWishlisted ? 'Убрать из избранного' : 'Добавить в избранное'}
           >
             <i className="fas fa-heart"></i>
+          </button>
+          <button className="quick-view-btn" onClick={handleQuickView} aria-label="Быстрый просмотр">
+            Быстрый просмотр
           </button>
         </div>
         
@@ -55,6 +94,7 @@ const ProductCard = ({ product }) => {
             <button 
               className="add-to-cart-btn"
               onClick={handleAddToCart}
+              aria-label="Добавить в корзину"
             >
               <i className="fas fa-shopping-cart"></i>
             </button>

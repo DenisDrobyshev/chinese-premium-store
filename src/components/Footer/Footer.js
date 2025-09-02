@@ -45,9 +45,10 @@ const Footer = () => {
             <ul>
               <li><Link to="/about">О нас</Link></li>
               <li><Link to="/contact">Контакты</Link></li>
-              <li><a href="#">Доставка и оплата</a></li>
-              <li><a href="#">Возврат и обмен</a></li>
-              <li><a href="#">Политика конфиденциальности</a></li>
+              <li><Link to="/shipping">Доставка и оплата</Link></li>
+              <li><Link to="/returns">Возврат и обмен</Link></li>
+              <li><Link to="/privacy">Политика конфиденциальности</Link></li>
+              <li><Link to="/terms">Пользовательское соглашение</Link></li>
             </ul>
           </div>
           

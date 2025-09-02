@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { products } from '../../data/products';
 import './ProductDetail.css';
+
+const RECENTS_KEY = 'imperial_recent_ids';
+export const getRecentlyViewed = () => {
+  try {
+    return JSON.parse(localStorage.getItem(RECENTS_KEY) || '[]');
+  } catch (e) {
+    return [];
+  }
+};
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -16,14 +25,24 @@ const ProductDetail = () => {
 
   const product = products.find(p => p.id === parseInt(id));
 
-  // Имитация загрузки данных
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 500);
-    
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (product) {
+      try {
+        const stored = JSON.parse(localStorage.getItem(RECENTS_KEY) || '[]');
+        const next = [product.id, ...stored.filter((pid) => pid !== product.id)].slice(0, 8);
+        localStorage.setItem(RECENTS_KEY, JSON.stringify(next));
+      } catch (e) {
+        // ignore
+      }
+    }
+  }, [product]);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -59,7 +78,6 @@ const ProductDetail = () => {
     }
   };
 
-  // Создаем массив изображений (в реальном приложении получаем с сервера)
   const productImages = [
     product.image,
     "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
