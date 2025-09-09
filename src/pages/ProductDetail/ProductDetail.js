@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import ProductCard from '../../components/ProductCard';
 import { products } from '../../data/products';
+import { categories } from '../../data/categories';
 import './ProductDetail.css';
 
 const RECENTS_KEY = 'imperial_recent_ids';
@@ -24,6 +26,24 @@ const ProductDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const product = products.find(p => p.id === parseInt(id));
+
+  const categoryId = useMemo(() => {
+    return categories.find(cat => cat.name === (product?.category || ''))?.id || 'all';
+  }, [product]);
+
+  const relatedByCategory = useMemo(() => {
+    if (!product) return [];
+    return products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 8);
+  }, [product]);
+
+  const recentlyViewedProducts = useMemo(() => {
+    const recentIds = getRecentlyViewed().filter(pid => pid !== product?.id);
+    const recent = recentIds
+      .map(pid => products.find(p => p.id === pid))
+      .filter(Boolean)
+      .slice(0, 8);
+    return recent;
+  }, [product]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -80,8 +100,7 @@ const ProductDetail = () => {
 
   const productImages = [
     product.image,
-    "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1584889c5c9d-5fe0fbd9bd77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
+    
   ];
 
   return (
@@ -92,7 +111,7 @@ const ProductDetail = () => {
           <span>/</span>
           <Link to="/catalog">Каталог</Link>
           <span>/</span>
-          <Link to={`/catalog?category=${product.category.toLowerCase()}`}>{product.category}</Link>
+          <Link to={`/catalog?category=${categoryId}`}>{product.category}</Link>
           <span>/</span>
           <span>{product.title}</span>
         </nav>
@@ -217,6 +236,32 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
+
+        {(relatedByCategory.length > 0) && (
+          <div className="related-section">
+            <div className="related-header">
+              <h2>Ещё в категории: {product.category}</h2>
+            </div>
+            <div className="products-grid">
+              {relatedByCategory.map(rel => (
+                <ProductCard key={rel.id} product={rel} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {(recentlyViewedProducts.length > 0) && (
+          <div className="recent-section">
+            <div className="related-header">
+              <h2>Вы недавно смотрели</h2>
+            </div>
+            <div className="products-grid">
+              {recentlyViewedProducts.map(rv => (
+                <ProductCard key={rv.id} product={rv} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

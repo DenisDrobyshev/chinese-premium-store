@@ -33,7 +33,7 @@ const Home = () => {
           <Link to="/catalog" className="cta-button">Смотреть коллекцию</Link>
         </div>
         <div className="hero-image">
-          <img src="https://images.unsplash.com/photo-1584735175097-719d848f8449?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80" alt="Китайская премиальная одежда" />
+          <img src="https://avatars.mds.yandex.net/i?id=49f1a879b8da412f84246c2405057092_l-11039778-images-thumbs&n=13" alt="Китайская премиальная одежда" />
         </div>
       </section>
       

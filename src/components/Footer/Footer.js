@@ -63,7 +63,7 @@ const Footer = () => {
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; 2023 Imperial Silk. Все права защищены.</p>
+          <p>&copy; 2025 Imperial Silk. Копирование и распространение запрещено. Все права защищены.</p>
         </div>
       </div>
     </footer>
