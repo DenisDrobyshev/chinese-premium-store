@@ -14,16 +14,16 @@ const Footer = () => {
             </h3>
             <p>Китайская премиальная одежда с вековыми традициями качества и роскоши.</p>
             <div className="social-links">
-              <a href="#" aria-label="WeChat">
+              <a href="https://weixin.qq.com" target="_blank" rel="noopener noreferrer" aria-label="WeChat">
                 <i className="fab fa-weixin"></i>
               </a>
-              <a href="#" aria-label="Weibo">
+              <a href="https://weibo.com" target="_blank" rel="noopener noreferrer" aria-label="Weibo">
                 <i className="fab fa-weibo"></i>
               </a>
-              <a href="#" aria-label="Instagram">
+              <a href="https://instagram.com/imperialsilk" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" aria-label="Facebook">
+              <a href="https://facebook.com/imperialsilk" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <i className="fab fa-facebook-f"></i>
               </a>
             </div>

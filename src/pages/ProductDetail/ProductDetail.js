@@ -203,7 +203,7 @@ const ProductDetail = () => {
                     </button>
                   ))}
                 </div>
-                <a href="#" className="size-guide">Таблица размеров</a>
+                <button type="button" className="size-guide" onClick={() => alert('Таблица размеров скоро будет доступна')}>Таблица размеров</button>
               </div>
               
               <div className="option-group">
