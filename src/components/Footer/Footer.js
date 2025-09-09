@@ -14,15 +14,19 @@ const Footer = () => {
             </h3>
             <p>Китайская премиальная одежда с вековыми традициями качества и роскоши.</p>
             <div className="social-links">
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a href="https://weixin.qq.com" target="_blank" rel="noopener noreferrer" aria-label="WeChat">
                 <i className="fab fa-weixin"></i>
               </a>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a href="https://weibo.com" target="_blank" rel="noopener noreferrer" aria-label="Weibo">
                 <i className="fab fa-weibo"></i>
               </a>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a href="https://instagram.com/imperialsilk" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <i className="fab fa-instagram"></i>
               </a>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a href="https://facebook.com/imperialsilk" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <i className="fab fa-facebook-f"></i>
               </a>
