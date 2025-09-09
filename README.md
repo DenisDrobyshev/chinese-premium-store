@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Imperial Silk · Chinese Premium Fashion 🐉
 
-## Available Scripts
+Элегантный интернет‑бутик с вдохновением восточной эстетики: роскошные коллекции, изысканные материалы и современный UX.
 
-In the project directory, you can run:
+<br/>
 
-### `npm start`
+[Смотреть демо](#-запуск) · [Функции](#-ключевые-функции) · [Стек](#-технологический-стек) · [Установка](#-установка-и-запуск)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ✨ Ключевые функции
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Каталог с фильтрами и сортировкой**: категория, цена, размеры, поиск, пагинация
+- **Детальная карточка товара**: галерея, цвета, размеры, количество, бейджи, детали
+- **Корзина и избранное**: контекст корзины + избранное в LocalStorage
+- **Недавно просмотренные**: умное сохранение и показ похожих
+- **Отзывчивый интерфейс**: адаптивные сетки, плавные ховеры и анимации
+- **Навигация**: хлебные крошки, быстрый просмотр, аккуратные переходы
+- **Контентные страницы**: About, Terms, Shipping, Returns, Privacy, Contact, Wishlist
 
-### `npm run build`
+## 🧰 Технологический стек
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React** + React Router
+- **Context API** для корзины
+- **CSS** (адаптивная сетка, анимации)
+- **LocalStorage**: wishlist и recently viewed
+- **Create React App** как базовая сборка
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📁 Структура проекта
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```text
+chinese-premium-fashion/
+  public/
+  src/
+    components/
+    context/
+    data/
+    pages/
+    App.js
+    index.js
+    index.css
+```
 
-### `npm run eject`
+- **components/**: UI‑компоненты (`Header`, `Footer`, `ProductCard`, `CategoryFilter`, `LoadingSpinner`)
+- **pages/**: страницы (каталог, карточка товара, статические страницы)
+- **context/**: `CartContext` — корзина и операции
+- **data/**: мок‑данные `products.js`, `categories.js`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🖋 Типографика
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Заголовки: `Noto Serif SC`
+- Текст: `Open Sans`
+- Шрифты подключены в `public/index.html` (Google Fonts) и применяются в CSS
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧪 Скрипты
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm install      # установка зависимостей
+npm start        # запуск dev-сервера http://localhost:3000
+npm run build    # продакшн-сборка в /build
+```
 
-## Learn More
+## 🚀 Установка и запуск
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone <repo-url>
+cd chinese-premium-fashion
+npm install
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## 🧭 Навигация по коду
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Каталог: `src/pages/Catalog/Catalog.js`
+- Карточка товара: `src/pages/ProductDetail/ProductDetail.js`
+- Карточки товаров: `src/components/ProductCard/ProductCard.js`
+- Корзина (контекст): `src/context/CartContext.js`
+- Данные: `src/data/products.js`, `src/data/categories.js`
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## ✅ Качество и UX
 
-### Making a Progressive Web App
+- Лоадер на начальной загрузке
+- Плавные hover‑эффекты и микровзаимодействия
+- Семантика и удобная навигация
+- Отзывчивая сетка для десктопа и мобильных
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## 📦 Деплой
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Готовая сборка лежит в каталоге `build/` после `npm run build`. Размещайте на любом статикахостинге (Netlify, Vercel, GitHub Pages, Nginx).
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🤝 Вклад
 
-### `npm run build` fails to minify
+PR приветствуются. Старайтесь придерживаться существующего стиля именования и форматирования.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## 📝 Лицензия
+
+MIT — используйте свободно, с указанием авторства.
